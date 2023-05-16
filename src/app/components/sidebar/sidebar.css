@@ -1,0 +1,47 @@
+.ctv-sidebar {
+  position: relative;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--white);
+  color: blue;
+  border-right: 1px solid var(--gray-200);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.ctv-sidebar .ctv-sidebar-header + .ctv-sidebar-content {
+  padding-top: 0;
+}
+
+.ctv-sidebar .ctv-sidebar-content {
+  padding: 1.25rem;
+}
+
+.ctv-sidebar-content {
+  position: relative;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.ctv-sidebar .ctv-sidebar-header {
+  padding: 1.25rem;
+}
+
+.ctv-sidebar-header {
+  display: flex;
+  align-items: center;
+}
+
+.ctv-sidebar .ctv-sidebar-footer {
+  padding: 1.25rem;
+}
+
+.ctv-sidebar-footer {
+  margin-top: auto;
+}
+
+.ctv-sidebar-left {
+  width: 16rem;
+  height: 100vh;
+}
