@@ -1,0 +1,32 @@
+.ctv-panelmenu .ctv-panelmenu-header-link {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+.ctv-panelmenu .ctv-panelmenu-header-link:focus {
+  z-index: 1;
+}
+
+.ctv-panelmenu .ctv-submenu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ctv-panelmenu .ctv-menuitem-text {
+  line-height: 1;
+}
+
+.ctv-panelmenu-expanded.ctv-toggleable-content:not(.ng-animation),
+.ctv-panelmenu .ctv-submenu-expanded:not(.ng-animation) {
+  overflow: visible;
+}
+
+.ctv-panelmenu .ctv-toggleable-content,
+.ctv-panelmenu .ctv-submenu-list {
+  overflow: hidden;
+}

@@ -1,4 +1,9 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectorRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Animation, BasePanelMenuItem, MenuItem } from './base-panel-menu-item';
 import { state, style, trigger } from '@angular/animations';
 import { PanelMenuComponent } from './panel-menu.component';
@@ -83,7 +88,7 @@ import { PanelMenuComponent } from './panel-menu.component';
         <ctv-panel-menu-sub
           [item]="child"
           [parentExpanded]="expanded && parentExpanded"
-          [expanded]="child.expanded"
+          [expanded]="child.expanded || false"
           [transtionOptions]="transtionOptions"
           *ngIf="child.items"
         ></ctv-panel-menu-sub>
@@ -96,6 +101,11 @@ import { PanelMenuComponent } from './panel-menu.component';
       state('visible', style({ height: '*' })),
     ]),
   ],
+  styleUrls: ['base-panel-menu.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'ctv-element',
+  },
 })
 export class PanelMenuSubComponent extends BasePanelMenuItem {
   @Input() item!: MenuItem;

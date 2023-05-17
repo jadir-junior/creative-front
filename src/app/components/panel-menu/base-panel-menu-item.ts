@@ -5,31 +5,31 @@ import { QueryParamsHandling } from '@angular/router';
 import { DomHandler } from '../../utils/dom/dom-handler';
 
 export interface MenuItem {
-  visible: boolean;
-  expanded: boolean;
-  disabled: boolean;
-  styleClass: string;
-  style: Style;
-  routerLink: any;
-  url: string;
-  id: string;
-  target: string;
-  title: string;
-  command?: (event?: { originalEvent: Event; item: MenuItem }) => void;
-  items: MenuItem[];
-  escape: boolean;
+  badge?: string;
+  badgeStyleClass?: string;
+  disabled?: boolean;
+  expanded?: boolean;
+  escape?: boolean;
+  fragment?: string;
+  id?: string;
+  items?: MenuItem[];
   label: string;
-  badge: string;
-  badgeStyleClass: string;
-  separator: boolean;
-  queryParams: { [k: string]: any };
-  queryParamsHandling: QueryParamsHandling;
-  routerLinkActiveOptions: any;
-  fragment: string;
-  preserveFragment: boolean;
-  skipLocationChange: boolean;
-  replaceUrl: boolean;
-  state: { [k: string]: any };
+  preserveFragment?: boolean;
+  queryParams?: { [k: string]: any };
+  queryParamsHandling?: QueryParamsHandling;
+  replaceUrl?: boolean;
+  routerLink?: any;
+  routerLinkActiveOptions?: any;
+  separator?: boolean;
+  styleClass?: string;
+  style?: Style;
+  target?: string;
+  url?: string;
+  visible?: boolean;
+  skipLocationChange?: boolean;
+  state?: { [k: string]: any };
+  title?: string;
+  command?: (event?: { originalEvent: Event; item: MenuItem }) => void;
 }
 
 export interface AnimationParams {

@@ -7,6 +7,7 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Style } from '../../types/style.type';
 import { Animation, BasePanelMenuItem, MenuItem } from './base-panel-menu-item';
@@ -35,7 +36,7 @@ import {
               'ctv-highlight': item.expanded,
               'ctv-disbaled': item.disabled
             }"
-            [class]="item.styleClass"
+            [class]="item.styleClass || ''"
             [ngStyle]="item.style"
           >
             <a
@@ -93,7 +94,7 @@ import {
             >
               <ctv-panel-menu-sub
                 [item]="item"
-                [parentExpanded]="item.expanded"
+                [parentExpanded]="item.expanded || false"
                 [expanded]="true"
                 [transtionOptions]="transitionOptions"
                 [root]="true"
@@ -112,8 +113,9 @@ import {
       transition('void => *', animate(0)),
     ]),
   ],
-  styleUrls: ['./panel-menu.component.css'],
+  styleUrls: ['./base-panel-menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class PanelMenuComponent
   extends BasePanelMenuItem
@@ -124,6 +126,7 @@ export class PanelMenuComponent
   @Input() styleClass = '';
   @Input() style: Style = null;
   @Input() transitionOptions = '400ms cubic-bezier(0.86, 0, 0.7, 1)';
+  @Input() multiple = true;
 
   @Input() model: MenuItem[] = [];
 
