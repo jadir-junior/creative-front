@@ -19,15 +19,23 @@ export class AppComponent {
       items: [
         {
           label: 'Business unit',
-          routerLink: '/business/create-and-update-business-unit',
+          routerLink: '/business/create-business-unit',
         },
         {
           label: 'Business unit local',
+          routerLink: '/business/create-business-unit-local',
         },
         {
           label: 'Occupation Area',
+          routerLink: '/business/create-occupation-area',
         },
       ],
+    },
+    {
+      label: 'Home',
+    },
+    {
+      label: 'Dashboard',
     },
   ];
 }

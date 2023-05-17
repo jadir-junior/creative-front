@@ -1,3 +1,32 @@
+.ctv-panelmenu .ctv-panelmenu-header > a {
+  padding: 0.5rem 0.75rem;
+  border: 0 none;
+  color: var(--text);
+  border-radius: 4px;
+  transition: none;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+}
+
+.ctv-panelmenu .ctv-panelmenu-header > a:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.ctv-panelmenu
+  .ctv-panelmenu-header:not(.ctv-highlight):not(.ctv-disabled)
+  > a:hover {
+  background: #f6f6f6;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.ctv-panelmenu .ctv-panelmenu-header.ctv-highlight {
+  margin-bottom: 0;
+}
+
 .ctv-panelmenu .ctv-panelmenu-header-link {
   display: flex;
   align-items: center;
@@ -17,8 +46,64 @@
   list-style: none;
 }
 
+.ctv-panelmenu
+  .ctv-panelmenu-content
+  .ctv-panelmenu-list:not(.ctv-panelmenu-root-submenu) {
+  padding: 0 0 0 1rem;
+}
+
+.ctv-panelmenu .ctv-panelmenu-content .ctv-menuitem .ctv-menuitem-link {
+  padding: 0.75rem 1.25rem;
+  color: #495097;
+  border-radius: 0;
+  transition: box-shadow 0.2s;
+  user-select: none;
+}
+
+.ctv-panelmenu
+  .ctv-panelmenu-content
+  .ctv-menuitem
+  .ctv-menuitem-link
+  .ctv-menuitem-text {
+  color: #495057;
+}
+
+.ctv-panelmenu
+  .ctv-panelmenu-content
+  .ctv-menuitem
+  .ctv-menuitem-link:not(.ctv-disabled):hover {
+  background: #e9ecef;
+}
+
+.ctv-panelmenu
+  .ctv-panelmenu-content
+  .ctv-menuitem
+  .ctv-menuitem-link:not(.ctv-disabled):hover
+  .ctv.menuitem-text {
+  color: #495057;
+}
+
+.ctv-panelmenu .ctv-panelmenu-content .ctv-menuitem .ctv-menuitem-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 0.15rem #c7d2fe;
+}
+
 .ctv-panelmenu .ctv-menuitem-text {
   line-height: 1;
+}
+
+.ctv-panelmenu .ctv-panelmenu-content {
+  padding: 0.5rem 0;
+  border: 0 none;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 0;
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .ctv-panelmenu-expanded.ctv-toggleable-content:not(.ng-animation),
@@ -29,4 +114,18 @@
 .ctv-panelmenu .ctv-toggleable-content,
 .ctv-panelmenu .ctv-submenu-list {
   overflow: hidden;
+}
+
+.ctv-panelmenu .ctv-menuitem-badge {
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
