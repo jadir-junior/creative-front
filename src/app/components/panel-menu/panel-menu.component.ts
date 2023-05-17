@@ -9,7 +9,7 @@ import {
   AfterContentInit,
 } from '@angular/core';
 import { Style } from '../../types/style.type';
-import { BasePanelMenuItem, MenuItem } from './base-panel-menu-item';
+import { Animation, BasePanelMenuItem, MenuItem } from './base-panel-menu-item';
 import { CreativeTemplate } from '../../directives/creative-template/creative-template.directive';
 import {
   animate,
@@ -18,16 +18,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-
-interface AnimationParams {
-  transitionParams: string;
-  height: string;
-}
-
-interface Animation {
-  value: string;
-  params: AnimationParams;
-}
 
 @Component({
   selector: 'ctv-panel-menu',
@@ -100,7 +90,15 @@ interface Animation {
               role="region"
               [attr.id]="item.id + '_content'"
               [attr.aria-labelledby]="item.id + '_header'"
-            ></div>
+            >
+              <ctv-panel-menu-sub
+                [item]="item"
+                [parentExpanded]="item.expanded"
+                [expanded]="true"
+                [transtionOptions]="transitionOptions"
+                [root]="true"
+              ></ctv-panel-menu-sub>
+            </div>
           </div>
         </div>
       </ng-container>
@@ -148,24 +146,6 @@ export class PanelMenuComponent
 
   visible(item: MenuItem): boolean {
     return item.visible !== false;
-  }
-
-  onItemKeyDown(event: KeyboardEvent): void {
-    let listItem = event.currentTarget as HTMLAnchorElement;
-
-    switch (event.code) {
-      case 'Space':
-      case 'Enter':
-        if (listItem) {
-          listItem.click();
-        }
-
-        event.preventDefault();
-        break;
-
-      default:
-        break;
-    }
   }
 
   onToggleDone(): void {
