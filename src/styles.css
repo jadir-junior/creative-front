@@ -4,7 +4,15 @@
 
   --text: #344054;
 
+  --gray-100: #f9fafb;
   --gray-200: #eaecf0;
+  --gray-500: #667085;
+  --gray-900: #101828;
+
+  --primary-100: #f9f5ff;
+  --primary-400: #b692f6;
+  --primary-500: #9e77ed;
+  --primary-700: #6941c6;
 
   --font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }

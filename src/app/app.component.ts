@@ -16,6 +16,7 @@ export class AppComponent {
   items: MenuItem[] = [
     {
       label: 'Business',
+      icon: 'factory',
       items: [
         {
           label: 'Business unit',
@@ -33,9 +34,13 @@ export class AppComponent {
     },
     {
       label: 'Home',
+      icon: 'other_houses',
+      items: [],
     },
     {
       label: 'Dashboard',
+      icon: 'dashboard',
+      items: [],
     },
   ];
 }

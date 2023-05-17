@@ -52,15 +52,13 @@ import {
               (keydown)="onItemKeyDown($event)"
               (click)="handleClick($event, item)"
             >
-              <ng-container *ngIf="item.items">
-                <ng-container *ngIf="!submenuIconTemplate">
-                  <!-- implement icon hard coded chevron-down and chevron-up -->
-                </ng-container>
-                <ng-template
-                  *ngTemplateOutlet="submenuIconTemplate"
-                ></ng-template>
-              </ng-container>
-              <!-- implement icon front the text -->
+              <ng-container *ngIf="item.items"> </ng-container>
+              <ctv-icon
+                class="ctv-panelmenu-header-icon"
+                *ngIf="item.icon"
+                [icon]="item.icon"
+                [ngStyle]="item.iconStyle"
+              ></ctv-icon>
               <span
                 class="ctv-menuitem-text"
                 *ngIf="item.escape !== false; else htmlRouteLabel"
@@ -70,6 +68,7 @@ import {
               <ng-template #htmlRouteLabel>
                 <span class="ctv-menuitem-text" [innerHTML]="item.label"></span>
               </ng-template>
+
               <span
                 class="ctv-menuitem-badge"
                 *ngIf="item.badge"
@@ -77,6 +76,16 @@ import {
               >
                 {{ item.badge }}
               </span>
+              <ng-container *ngIf="!submenuIconTemplate">
+                <span class="ctv-panelmenu-toggle">
+                  <ctv-icon
+                    [icon]="item.expanded ? 'expand_less' : 'expand_more'"
+                  ></ctv-icon>
+                </span>
+              </ng-container>
+              <ng-template
+                *ngTemplateOutlet="submenuIconTemplate"
+              ></ng-template>
             </a>
           </div>
           <div

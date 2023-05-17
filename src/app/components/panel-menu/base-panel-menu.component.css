@@ -2,11 +2,14 @@
   padding: 0.5rem 0.75rem;
   border: 0 none;
   color: var(--text);
-  border-radius: 4px;
+  border-radius: 0.375rem;
   transition: none;
   font-weight: 600;
   font-size: 1rem;
   line-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .ctv-panelmenu .ctv-panelmenu-header > a:focus {
@@ -15,16 +18,33 @@
   box-shadow: none;
 }
 
+.ctv-panelmenu .ctv-panelmenu-header .ctv-panelmenu-toggle {
+  margin-left: auto;
+}
+
 .ctv-panelmenu
   .ctv-panelmenu-header:not(.ctv-highlight):not(.ctv-disabled)
   > a:hover {
-  background: #f6f6f6;
+  background: var(--gray-100);
   border-color: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--gray-900);
 }
 
 .ctv-panelmenu .ctv-panelmenu-header.ctv-highlight {
   margin-bottom: 0;
+}
+
+.ctv-panelmenu .ctv-panelmenu-header.ctv-highlight > a {
+  color: var(--primary-700);
+  background: var(--primary-100);
+}
+
+.ctv-panelmenu .ctv-panelmenu-header .ctv-panelmenu-header-icon {
+  color: var(--gray-500);
+}
+
+.ctv-panelmenu .ctv-panelmenu-header.ctv-highlight .ctv-panelmenu-header-icon {
+  color: var(--primary-500);
 }
 
 .ctv-panelmenu .ctv-panelmenu-header-link {

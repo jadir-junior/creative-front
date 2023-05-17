@@ -11,6 +11,8 @@ export interface MenuItem {
   expanded?: boolean;
   escape?: boolean;
   fragment?: string;
+  icon?: string;
+  iconStyle?: Style;
   id?: string;
   items?: MenuItem[];
   label: string;
