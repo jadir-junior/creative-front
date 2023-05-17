@@ -63,13 +63,8 @@ import { PanelMenuComponent } from './panel-menu.component';
           [replaceUrl]="child.replaceUrl"
           [state]="child.state"
         >
-          <ng-container *ngIf="child.items">
-            <!-- implement icons -->
-            <ng-template
-              *ngTemplateOutlet="panelMenu.submenuIconTemplate"
-            ></ng-template>
-          </ng-container>
           <!-- implement icon -->
+          <span *ngIf="!child.icon" class="ctv-menuitem-without-icon"></span>
           <span
             class="ctv-menuitem-text"
             *ngIf="child.escape !== false; else htmlRouteLabel"
