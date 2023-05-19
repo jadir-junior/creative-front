@@ -8,9 +8,19 @@ import { MenuItem } from './components/panel-menu/base-panel-menu-item';
       <ctv-sidebar>
         <ctv-panel-menu [model]="items"></ctv-panel-menu>
       </ctv-sidebar>
-      <h1>Test do texto pra ver se ficou atras do menu</h1>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
     </div>
   `,
+  styles: [
+    `
+      main {
+        margin: 2rem;
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class AppComponent {
   items: MenuItem[] = [

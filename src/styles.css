@@ -6,19 +6,65 @@
 
   --gray-100: #f9fafb;
   --gray-200: #eaecf0;
+  --gray-300: #d0d5dd;
   --gray-500: #667085;
+  --gray-600: #475467;
   --gray-900: #101828;
 
   --primary-100: #f9f5ff;
+  --primary-300: #d6bbfb;
   --primary-400: #b692f6;
   --primary-500: #9e77ed;
   --primary-700: #6941c6;
 
+  --error-300: #fda29b;
+  --error-500: #f04438;
+
   --font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  font-family: var(--font-family);
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.875rem;
+  color: var(--gray-900);
+  line-height: 38px;
+  font-weight: 600;
+}
+
+hr {
+  border-top: 1px solid var(--gray-200);
 }
 
 .ctv-component {
   font-family: var(--font-family);
   font-size: 1rem;
   font-weight: normal;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  color: var(--gray-900);
+  line-height: 28px;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 20px;
+}
+
+.text-regular {
+  font-weight: 400;
+}
+
+.text-medium {
+  font-weight: 500;
 }
