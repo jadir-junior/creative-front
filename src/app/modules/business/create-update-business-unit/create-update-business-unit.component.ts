@@ -12,14 +12,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     </div>
     <hr />
     <form [formGroup]="form">
-      <ctv-input
-        label="Email"
-        type="email"
-        id="email"
-        name="Email"
-        placeholder="olivia@untitledui.com"
-        formControlName="email"
-      />
+      <div style="margin-bottom: 1.5rem">
+        <ctv-input
+          label="Email"
+          type="email"
+          id="email"
+          name="Email"
+          placeholder="olivia@untitledui.com"
+          formControlName="email"
+        />
+      </div>
+      <hr />
+      <div style="display: flex; gap:  12px; margin-top: 1.25rem">
+        <ctv-button color="secondary">Cancel</ctv-button>
+        <ctv-button>Save</ctv-button>
+      </div>
     </form>
   `,
   styles: [

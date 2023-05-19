@@ -9,12 +9,15 @@
   --gray-300: #d0d5dd;
   --gray-500: #667085;
   --gray-600: #475467;
+  --gray-700: #344054;
   --gray-900: #101828;
 
   --primary-100: #f9f5ff;
+  --primary-200: #e9d7fe;
   --primary-300: #d6bbfb;
   --primary-400: #b692f6;
   --primary-500: #9e77ed;
+  --primary-600: #7f56d9;
   --primary-700: #6941c6;
 
   --error-300: #fda29b;
@@ -37,6 +40,7 @@ h1 {
 
 hr {
   border-top: 1px solid var(--gray-200);
+  margin: 0px;
 }
 
 .ctv-component {
