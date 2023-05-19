@@ -1,5 +1,5 @@
 import { BusinessService } from './../services/business.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -41,6 +41,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <h3 class="text-lg text-semi-bold">Business units</h3>
         <p class="text-sm text-regular">Manage your business units</p>
       </div>
+      <div style="width: 100%">
+        <ctv-table [value]="value" [columns]="cols">
+          <ng-template ctvTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">{{ col.header }}</th>
+              <th>Actions</th>
+            </tr>
+          </ng-template>
+          <ng-template ctvTemplate="body" let-business let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">{{ business[col.field] }}</td>
+              <td>button deletar</td>
+            </tr>
+          </ng-template>
+        </ctv-table>
+      </div>
     </div>
   `,
   styles: [
@@ -58,6 +74,20 @@ export class CreateUpdateBusinessUnitComponent {
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
   });
+
+  value: any[] = [
+    {
+      id: '123',
+      name: 'Business unit',
+    },
+  ];
+
+  cols: any[] = [
+    {
+      field: 'name',
+      header: 'Name',
+    },
+  ];
 
   constructor(
     private fb: FormBuilder,

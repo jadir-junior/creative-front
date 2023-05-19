@@ -5,6 +5,7 @@ import { BusinessRoutingModule } from './business-routing.module';
 import { CreateUpdateBusinessUnitComponent } from './create-update-business-unit/create-update-business-unit.component';
 import { ComponentsModule } from '../../components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreativeTemplateModule } from '../../directives/creative-template/creative-template.module';
 
 @NgModule({
   declarations: [CreateUpdateBusinessUnitComponent],
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BusinessRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
+    CreativeTemplateModule,
   ],
 })
 export class BusinessModule {}
