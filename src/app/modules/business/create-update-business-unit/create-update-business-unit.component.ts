@@ -42,30 +42,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <p class="text-sm text-regular">Manage your business units</p>
       </div>
       <div style="width: 100%">
-        <ctv-card>
-          <ctv-table [value]="value" [columns]="cols" variant="card">
-            <ng-template ctvTemplate="header" let-columns>
-              <tr>
-                <th *ngFor="let col of columns">{{ col.header }}</th>
-                <th>Actions</th>
-              </tr>
-            </ng-template>
-            <ng-template ctvTemplate="body" let-business let-columns="columns">
-              <tr>
-                <td *ngFor="let col of columns">{{ business[col.field] }}</td>
-                <td>
-                  <ctv-button
-                    icon="delete"
-                    variant="text"
-                    color="secondary"
-                    [rounded]="true"
-                    (onClick)="deleteBusinessUnit(business.id)"
-                  ></ctv-button>
-                </td>
-              </tr>
-            </ng-template>
-          </ctv-table>
-        </ctv-card>
+        <ctv-table [value]="value" [columns]="cols" variant="card">
+          <ng-template ctvTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">{{ col.header }}</th>
+              <th>Actions</th>
+            </tr>
+          </ng-template>
+          <ng-template ctvTemplate="body" let-business let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">{{ business[col.field] }}</td>
+              <td>
+                <ctv-button
+                  icon="delete"
+                  variant="text"
+                  color="secondary"
+                  [rounded]="true"
+                  (onClick)="deleteBusinessUnit(business.id)"
+                ></ctv-button>
+              </td>
+            </tr>
+          </ng-template>
+        </ctv-table>
       </div>
     </div>
   `,
