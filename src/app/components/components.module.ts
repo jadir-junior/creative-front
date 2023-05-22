@@ -4,6 +4,7 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { InputModule } from './input/input.module';
 import { ButtonModule } from './button/button.module';
 import { TableModule } from './table/table.module';
+import { CardModule } from './card/card.module';
 
 const modules = [
   PanelMenuModule,
@@ -11,6 +12,7 @@ const modules = [
   InputModule,
   ButtonModule,
   TableModule,
+  CardModule,
 ];
 
 @NgModule({

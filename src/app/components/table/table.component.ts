@@ -14,6 +14,8 @@ import { Style } from '../../types/style.type';
 import { TableService } from './table.service';
 import { CreativeTemplate } from '../../directives/creative-template/creative-template.directive';
 
+type Variant = 'card' | 'clean';
+
 @Component({
   selector: 'ctv-table',
   template: `
@@ -38,7 +40,7 @@ import { CreativeTemplate } from '../../directives/creative-template/creative-te
             [ngClass]="classesTable"
             [class]="tableStyleClass"
             [style]="tableStyle"
-            [attr.id]="id + '_table'"
+            [attr.id]="id ? id + '_table' : null"
           >
             <thead #thead class="ctv-datatable-thead">
               <ng-container
@@ -77,6 +79,7 @@ export class TableComponent implements OnChanges, AfterContentInit {
   @Input() tableStyle: Style;
   @Input() rowTrackBy = (index: number, item: any) => item;
   @Input() rowGroupMode: 'subheader' | 'rowspan' | undefined = undefined;
+  @Input() variant: Variant = 'clean';
 
   @Input() get value(): any[] {
     return this._value;
@@ -107,6 +110,7 @@ export class TableComponent implements OnChanges, AfterContentInit {
   get classesTable() {
     return {
       'ctv-datatable-table': true,
+      [`ctv-datatable-variant-${this.variant}`]: true,
     };
   }
 

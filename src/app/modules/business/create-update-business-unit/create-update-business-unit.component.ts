@@ -1,5 +1,5 @@
-import { BusinessService } from './../services/business.service';
-import { Component } from '@angular/core';
+import { BusinessService, BusinessUnit } from './../services/business.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -42,27 +42,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         <p class="text-sm text-regular">Manage your business units</p>
       </div>
       <div style="width: 100%">
-        <ctv-table [value]="value" [columns]="cols">
-          <ng-template ctvTemplate="header" let-columns>
-            <tr>
-              <th *ngFor="let col of columns">{{ col.header }}</th>
-              <th>Actions</th>
-            </tr>
-          </ng-template>
-          <ng-template ctvTemplate="body" let-business let-columns="columns">
-            <tr>
-              <td *ngFor="let col of columns">{{ business[col.field] }}</td>
-              <td>
-                <ctv-button
-                  icon="delete"
-                  variant="text"
-                  color="secondary"
-                  [rounded]="true"
-                ></ctv-button>
-              </td>
-            </tr>
-          </ng-template>
-        </ctv-table>
+        <ctv-card>
+          <ctv-table [value]="value" [columns]="cols" variant="card">
+            <ng-template ctvTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">{{ col.header }}</th>
+                <th>Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template ctvTemplate="body" let-business let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">{{ business[col.field] }}</td>
+                <td>
+                  <ctv-button
+                    icon="delete"
+                    variant="text"
+                    color="secondary"
+                    [rounded]="true"
+                    (onClick)="deleteBusinessUnit(business.id)"
+                  ></ctv-button>
+                </td>
+              </tr>
+            </ng-template>
+          </ctv-table>
+        </ctv-card>
       </div>
     </div>
   `,
@@ -77,17 +80,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     `,
   ],
 })
-export class CreateUpdateBusinessUnitComponent {
+export class CreateUpdateBusinessUnitComponent implements OnInit {
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
   });
 
-  value: any[] = [
-    {
-      id: '123',
-      name: 'Business unit',
-    },
-  ];
+  value: BusinessUnit[] = [];
 
   cols: any[] = [
     {
@@ -101,11 +99,28 @@ export class CreateUpdateBusinessUnitComponent {
     private businessService: BusinessService
   ) {}
 
+  ngOnInit(): void {
+    this.getBusinessUnits();
+  }
+
+  getBusinessUnits(): void {
+    this.businessService.listBusinessUnits().subscribe((response) => {
+      this.value = response.data;
+    });
+  }
+
   cancel(): void {}
 
   onSubmit({ value }: FormGroup): void {
-    this.businessService.createBusinessUnit(value).subscribe((response) => {
-      console.log(response);
+    this.businessService.createBusinessUnit(value).subscribe(() => {
+      this.getBusinessUnits();
+      this.form.reset();
+    });
+  }
+
+  deleteBusinessUnit(id: string): void {
+    this.businessService.deleteBusinessUnit(id).subscribe(() => {
+      this.getBusinessUnits();
     });
   }
 }
