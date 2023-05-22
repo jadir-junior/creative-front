@@ -1,5 +1,5 @@
 import { BusinessService } from './../services/business.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -52,7 +52,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
           <ng-template ctvTemplate="body" let-business let-columns="columns">
             <tr>
               <td *ngFor="let col of columns">{{ business[col.field] }}</td>
-              <td>button deletar</td>
+              <td>
+                <ctv-button
+                  icon="delete"
+                  variant="text"
+                  color="secondary"
+                  [rounded]="true"
+                ></ctv-button>
+              </td>
             </tr>
           </ng-template>
         </ctv-table>

@@ -38,8 +38,9 @@
 
 .ctv-datatable .ctv-datatable-tbody > tr > td {
   text-align: left;
-  padding: 1rem 0rem;
+  padding: 0.5rem 0rem;
   border: 1px solid var(--gray-200);
   border-width: 0 0 1px 0;
   font-weight: 500;
+  vertical-align: middle;
 }

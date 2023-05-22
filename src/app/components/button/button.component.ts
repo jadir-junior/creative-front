@@ -6,6 +6,12 @@ import {
   Output,
 } from '@angular/core';
 
+type Color = 'primary' | 'secondary';
+
+type Type = 'submit' | 'button';
+
+type Variant = 'default' | 'text';
+
 @Component({
   selector: 'ctv-button',
   template: `
@@ -17,60 +23,22 @@ import {
       (click)="click()"
     >
       <ng-content></ng-content>
+      <ng-container>
+        <ctv-icon *ngIf="icon" [icon]="icon"></ctv-icon>
+      </ng-container>
     </button>
   `,
-  styles: [
-    `
-      .ctv-button {
-        padding: 0.625rem 1rem;
-        border: none;
-        border-radius: 0.5rem;
-        cursor: pointer;
-
-        &:disabled {
-          cursor: initial;
-        }
-      }
-
-      .ctv-button-primary {
-        color: var(--white);
-        background: var(--primary-600);
-        border: 1px solid var(--primary-600);
-
-        &:hover {
-          background: var(--primary-700);
-          border: 1px solid var(--primary-700);
-        }
-
-        &:disabled {
-          background: var(--primary-200);
-          border: 1px solid var(--primary-200);
-        }
-      }
-
-      .ctv-button-secondary {
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-300);
-
-        &:hover {
-          background: var(--gray-100);
-        }
-
-        &:disabled {
-          border: 1px solid var(--gray-200);
-          background: var(--white);
-          color: var(--gray-200);
-        }
-      }
-    `,
-  ],
+  styleUrls: ['./button.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  @Input() color: 'primary' | 'secondary' = 'primary';
+  @Input() color: Color = 'primary';
+  @Input() type: Type = 'button';
+  @Input() variant: Variant = 'default';
+  @Input() label?: string;
   @Input() disabled = false;
-  @Input() type: 'button' | 'submit' = 'button';
+  @Input() icon?: string;
+  @Input() rounded = false;
 
   @Output() onClick = new EventEmitter();
 
@@ -83,6 +51,9 @@ export class ButtonComponent {
   get classes() {
     return {
       [`ctv-button-${this.color}`]: true,
+      [`ctv-button-variant-${this.variant}`]: true,
+      'ctv-button-rounded': this.rounded,
+      'ctv-button-icon-only': this.icon && !this.label,
     };
   }
 }

@@ -1,0 +1,75 @@
+.ctv-button {
+  padding: 0.625rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: initial;
+  }
+}
+
+.ctv-button-primary.ctv-button-variant-default {
+  color: var(--white);
+  background: var(--primary-600);
+  border: 1px solid var(--primary-600);
+
+  &:hover {
+    background: var(--primary-700);
+    border: 1px solid var(--primary-700);
+  }
+
+  &:disabled {
+    background: var(--primary-200);
+    border: 1px solid var(--primary-200);
+  }
+}
+
+.ctv-button-secondary.ctv-button-variant-default {
+  color: var(--gray-700);
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+
+  &:hover {
+    background: var(--gray-100);
+  }
+
+  &:disabled {
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    color: var(--gray-200);
+  }
+}
+
+.ctv-button-secondary.ctv-button-variant-text {
+  color: var(--gray-600);
+  background: var(--white);
+
+  &:hover {
+    background: var(--gray-100);
+  }
+
+  &:disabled {
+    background: var(--gray-200);
+    color: var(--gray-100);
+  }
+}
+
+.ctv-button-icon-only {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+.ctv-button-icon-only:after {
+  content: "p";
+  visibility: hidden;
+  clip: rect(0 0 0 0);
+  width: 0;
+}
+
+.ctv-button-rounded {
+  border-radius: 50%;
+}
