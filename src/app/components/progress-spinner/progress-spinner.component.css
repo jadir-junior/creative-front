@@ -1,0 +1,49 @@
+.ctv-progress-spinner {
+  position: relative;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  display: flex;
+}
+
+.ctv-progress-spinner::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.ctv-progress-spinner-svg {
+  animation: ctv-progress-spinner-rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.ctv-progress-spinner-circle {
+  stroke-dasharray: 89, 200;
+  stroke-dashoffset: 0;
+  stroke: var(--primary-600);
+  stroke-linecap: round;
+}
+
+@keyframes ctv-progress-spinner-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ctv-progress-spinner-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--gray-700);
+  text-align: center;
+  margin-top: 1.125rem;
+}

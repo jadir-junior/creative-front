@@ -43,7 +43,19 @@ import { MessageService } from '../../../components/toast/message.service';
         <p class="text-sm text-regular">Manage your business units</p>
       </div>
       <div style="width: 100%">
-        <ctv-table [value]="value" [columns]="cols" variant="card">
+        <div
+          style="height: 300px; display: flex; align-items:center; justify-content: center;"
+          *ngIf="loading"
+        >
+          <ctv-progress-spinner label="Loading..."></ctv-progress-spinner>
+        </div>
+        <ctv-not-data *ngIf="!value.length && !loading"></ctv-not-data>
+        <ctv-table
+          *ngIf="value.length && !loading"
+          [value]="value"
+          [columns]="cols"
+          variant="card"
+        >
           <ng-template ctvTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns">{{ col.header }}</th>
@@ -85,6 +97,7 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
   });
 
   value: BusinessUnit[] = [];
+  loading = false;
 
   cols: any[] = [
     {
@@ -104,8 +117,15 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
   }
 
   getBusinessUnits(): void {
-    this.businessService.listBusinessUnits().subscribe((response) => {
-      this.value = response.data;
+    this.loading = true;
+    this.businessService.listBusinessUnits().subscribe({
+      next: (response) => {
+        this.value = response.data;
+      },
+      error: () => {},
+      complete: () => {
+        this.loading = false;
+      },
     });
   }
 

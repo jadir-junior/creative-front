@@ -48,6 +48,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 h1 {
   font-size: 1.875rem;
   color: var(--gray-900);
@@ -66,20 +71,28 @@ hr {
   font-weight: normal;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 20px;
+}
+
 .text-lg {
   font-size: 1.125rem;
   color: var(--gray-900);
   line-height: 28px;
 }
 
-.text-semi-bold {
-  font-weight: 600;
+.text-xl {
+  font-size: 1.25rem;
+  color: var(--gray-600);
+  line-height: 30px;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  line-height: 20px;
+.display-xl {
+  font-size: 3.75rem;
+  color: var(--gray-900);
+  line-height: 72px;
 }
 
 .text-regular {
@@ -88,4 +101,8 @@ hr {
 
 .text-medium {
   font-weight: 500;
+}
+
+.text-semi-bold {
+  font-weight: 600;
 }

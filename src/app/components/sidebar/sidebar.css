@@ -1,5 +1,5 @@
 .ctv-sidebar {
-  position: relative;
+  position: fixed;
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
@@ -43,5 +43,5 @@
 
 .ctv-sidebar-left {
   width: 16rem;
-  height: 100vh;
+  height: 100%;
 }

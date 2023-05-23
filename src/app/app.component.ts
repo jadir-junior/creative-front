@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { MenuItem } from './components/panel-menu/base-panel-menu-item';
-import { MessageService } from './components/toast/message.service';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div style="display: flex">
+    <div style="display: flex; height: 100%">
       <ctv-sidebar>
         <ctv-panel-menu [model]="items"></ctv-panel-menu>
       </ctv-sidebar>
@@ -19,6 +18,7 @@ import { MessageService } from './components/toast/message.service';
     `
       main {
         margin: 2rem;
+        margin-left: 18rem;
         width: 100%;
       }
     `,

@@ -6,6 +6,8 @@ import { ButtonModule } from './button/button.module';
 import { TableModule } from './table/table.module';
 import { CardModule } from './card/card.module';
 import { IconModule } from './icon/icon.module';
+import { NotDataModule } from './not-data/not-data.module';
+import { ProgressSpinnerModule } from './progress-spinner/progress-spinner.module';
 
 const modules = [
   PanelMenuModule,
@@ -15,6 +17,8 @@ const modules = [
   TableModule,
   CardModule,
   IconModule,
+  NotDataModule,
+  ProgressSpinnerModule,
 ];
 
 @NgModule({

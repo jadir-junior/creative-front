@@ -35,10 +35,22 @@ export class BusinessService {
   createBusinessUnit(
     businessUnit: BusinessUnitCreate
   ): Observable<BusinessUnit> {
-    return this.http.post<BusinessUnit>(`/url/api/business-unit`, businessUnit);
+    return this.http
+      .post<BusinessUnit>(`/url/api/business-unit`, businessUnit)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.handleError.handle(error);
+          return of();
+        })
+      );
   }
 
   deleteBusinessUnit(id: string): Observable<any> {
-    return this.http.delete(`/url/api/business-unit/${id}`);
+    return this.http.delete(`/url/api/business-unit/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.handleError.handle(error);
+        return of();
+      })
+    );
   }
 }
