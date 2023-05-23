@@ -7,6 +7,8 @@ import { ComponentsModule } from './components/components.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from './components/toast/toast.module';
+import { MessageService } from './components/toast/message.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,8 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

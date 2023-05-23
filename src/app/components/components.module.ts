@@ -5,6 +5,7 @@ import { InputModule } from './input/input.module';
 import { ButtonModule } from './button/button.module';
 import { TableModule } from './table/table.module';
 import { CardModule } from './card/card.module';
+import { IconModule } from './icon/icon.module';
 
 const modules = [
   PanelMenuModule,
@@ -13,6 +14,7 @@ const modules = [
   ButtonModule,
   TableModule,
   CardModule,
+  IconModule,
 ];
 
 @NgModule({

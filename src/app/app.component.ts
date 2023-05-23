@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from './components/panel-menu/base-panel-menu-item';
+import { MessageService } from './components/toast/message.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { MenuItem } from './components/panel-menu/base-panel-menu-item';
       </ctv-sidebar>
       <main>
         <router-outlet></router-outlet>
+        <ctv-toast></ctv-toast>
       </main>
     </div>
   `,

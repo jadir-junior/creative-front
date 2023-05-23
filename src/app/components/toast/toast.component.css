@@ -1,0 +1,107 @@
+.ctv-toast {
+  position: fixed;
+  width: 25rem;
+  opacity: 0.9;
+}
+
+.ctv-toast-message {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ctv-toast .ctv-toast-message.ctv-toast-message-success {
+  background: var(--success-100);
+  border: 1px solid var(--success-300);
+  color: var(--success-700);
+}
+
+.ctv-toast-message-icon {
+  margin-top: -0.5rem;
+}
+
+.ctv-toast .ctv-toast-message.ctv-toast-message-success .ctv-toast-summary,
+.ctv-toast .ctv-toast-message.ctv-toast-message-success .ctv-toast-detail,
+.ctv-toast .ctv-toast-message.ctv-toast-message-success .ctv-toast-icon-close {
+  color: var(--success-600);
+}
+
+.ctv-toast
+  .ctv-toast-message.ctv-toast-message-success
+  .ctv-toast-message-icon-outline-inner {
+  border: 2px solid var(--success-400);
+  border-radius: 50%;
+  display: block;
+  margin: 2px;
+}
+
+.ctv-toast
+  .ctv-toast-message.ctv-toast-message-success
+  .ctv-toast-message-icon-outline-outer {
+  border: 2px solid var(--success-200);
+  border-radius: 50%;
+  display: block;
+}
+
+.ctv-toast .ctv-toast-message.ctv-toast-message-error {
+  background: var(--error-100);
+  border: 1px solid var(--error-300);
+  color: var(--error-700);
+}
+
+.ctv-toast .ctv-toast-message.ctv-toast-message-error .ctv-toast-summary,
+.ctv-toast .ctv-toast-message.ctv-toast-message-error .ctv-toast-detail,
+.ctv-toast .ctv-toast-message.ctv-toast-message-error .ctv-toast-icon-close {
+  color: var(--error-700);
+}
+
+.ctv-toast
+  .ctv-toast-message.ctv-toast-message-error
+  .ctv-toast-message-icon-outline-inner {
+  border: 2px solid var(--error-400);
+  border-radius: 50%;
+  display: block;
+  margin: 2px;
+}
+
+.ctv-toast
+  .ctv-toast-message.ctv-toast-message-error
+  .ctv-toast-message-icon-outline-outer {
+  border: 2px solid var(--error-200);
+  border-radius: 50%;
+  display: block;
+}
+
+.ctv-toast .ctv-toast-message-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ctv-toast-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.ctv-toast-message-text {
+  flex: 1 1 auto;
+  margin-left: 1rem;
+}
+
+.ctv-toast-icon-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.ctv-toast-icon-close.ctv-link {
+  cursor: pointer;
+}

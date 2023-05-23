@@ -20,8 +20,25 @@
   --primary-600: #7f56d9;
   --primary-700: #6941c6;
 
+  --error-100: #fffbfa;
+  --error-200: #fecdca;
   --error-300: #fda29b;
+  --error-400: #f97066;
   --error-500: #f04438;
+  --error-600: #d92d20;
+  --error-700: #b42318;
+  --error-800: #912018;
+  --error-900: #7a271a;
+
+  --success-100: #f6fef9;
+  --success-200: #a6f4c5;
+  --success-300: #75e0a7;
+  --success-400: #32d583;
+  --success-500: #12b76a;
+  --success-600: #079455;
+  --success-700: #067647;
+  --success-800: #05603a;
+  --success-900: #054f31;
 
   --font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }

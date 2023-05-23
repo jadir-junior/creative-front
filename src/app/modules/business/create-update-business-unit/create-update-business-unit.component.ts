@@ -1,6 +1,7 @@
 import { BusinessService, BusinessUnit } from './../services/business.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from '../../../components/toast/message.service';
 
 @Component({
   selector: 'app-create-update-business-unit',
@@ -94,7 +95,8 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private businessService: BusinessService
+    private businessService: BusinessService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -111,6 +113,12 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
 
   onSubmit({ value }: FormGroup): void {
     this.businessService.createBusinessUnit(value).subscribe(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successfully saved',
+        detail: 'The Business unit was saved successfully',
+      });
+
       this.getBusinessUnits();
       this.form.reset();
     });
