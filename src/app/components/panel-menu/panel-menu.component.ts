@@ -116,9 +116,9 @@ import {
   `,
   animations: [
     trigger('rootItem', [
-      state('hidden', style({ height: 0 })),
+      state('hidden', style({ height: '0' })),
       state('visible', style({ height: '*' })),
-      transition('viseble <=> hidden', [animate('{{transitionParams}}')]),
+      transition('visible <=> hidden', [animate('{{transitionParams}}')]),
       transition('void => *', animate(0)),
     ]),
   ],
@@ -134,7 +134,7 @@ export class PanelMenuComponent
 
   @Input() styleClass = '';
   @Input() style: Style = null;
-  @Input() transitionOptions = '400ms cubic-bezier(0.86, 0, 0.7, 1)';
+  @Input() transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
   @Input() multiple = true;
 
   @Input() model: MenuItem[] = [];
@@ -158,6 +158,19 @@ export class PanelMenuComponent
 
   visible(item: MenuItem): boolean {
     return item.visible !== false;
+  }
+
+  override handleClick(event: MouseEvent, item: MenuItem): void {
+    if (!this.multiple) {
+      for (let modelItem of this.model) {
+        if (item !== modelItem && modelItem.expanded) {
+          modelItem.expanded = false;
+        }
+      }
+    }
+
+    this.animating = true;
+    super.handleClick(event, item);
   }
 
   onToggleDone(): void {
