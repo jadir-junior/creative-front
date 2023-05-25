@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+
+type Value = string | undefined | null | { value: Value };
 
 @Component({
   selector: 'ctv-input',
@@ -24,7 +31,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
         [attr.id]="id"
         [attr.placeholder]="placeholder"
         [attr.name]="name"
-        (change)="onChange(input.value)"
+        (change)="onInputChange(input.value)"
         (blur)="onBlur()"
       />
       <div *ngIf="isError" class="ctv-input-error-message text-sm text-regular">
@@ -48,13 +55,13 @@ export class InputComponent implements ControlValueAccessor {
   @Input() submitted = false;
   @Input() name?: string;
 
-  value?: string | undefined;
+  value?: Value;
   disabled = false;
 
-  onChange!: (value: string) => void;
+  onChange!: (value: Value) => void;
   onTouched!: () => void;
 
-  constructor(public ngControl: NgControl) {
+  constructor(public ngControl: NgControl, private cd: ChangeDetectorRef) {
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
     }
@@ -71,16 +78,17 @@ export class InputComponent implements ControlValueAccessor {
     return false;
   }
 
-  writeValue(value: string | any): void {
+  writeValue(value: Value): void {
     if (value instanceof Object) {
       this.value = value.value;
       return;
     }
 
     this.value = value;
+    this.cd.detectChanges();
   }
 
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: Value) => void): void {
     this.onChange = fn;
   }
 
@@ -90,6 +98,12 @@ export class InputComponent implements ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  onInputChange(value: string | undefined | null): void {
+    this.value = value;
+    this.onChange(this.value);
+    this.onTouched();
   }
 
   onBlur(): void {
