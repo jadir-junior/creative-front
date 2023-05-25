@@ -138,7 +138,6 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
         summary: 'Successfully saved',
         detail: 'The Business unit was saved successfully',
       });
-
       this.getBusinessUnits();
       this.form.reset();
     });
