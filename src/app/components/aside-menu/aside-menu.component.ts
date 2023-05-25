@@ -47,6 +47,10 @@ export class AsideMenuComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    this.getUrlAndInitializePanelMenuOptionExpanded();
+  }
+
+  getUrlAndInitializePanelMenuOptionExpanded(): void {
     this.routerSubscription = this.router.events
       .pipe(
         filter(
@@ -54,11 +58,11 @@ export class AsideMenuComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe((event) => {
-        this.panelMenuInitialize(event.url);
+        this.panelMenuInitializeOptionExpanded(event.url);
       });
   }
 
-  panelMenuInitialize(route: string): void {
+  panelMenuInitializeOptionExpanded(route: string): void {
     switch (route) {
       case '/business/create-business-unit':
         this.items[0].expanded = true;
