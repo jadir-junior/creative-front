@@ -8,7 +8,6 @@ import { NavigationEnd, Router } from '@angular/router';
   template: `
     <aside><ctv-panel-menu [model]="items"></ctv-panel-menu></aside>
   `,
-  styles: [],
 })
 export class AsideMenuComponent implements OnInit, OnDestroy {
   items: MenuItem[] = [
