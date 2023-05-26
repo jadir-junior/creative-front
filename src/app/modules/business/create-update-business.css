@@ -1,0 +1,33 @@
+.company-section {
+  padding-top: 2rem;
+  padding-bottom: 1.25rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.ctv-business-form {
+  margin-top: 1.25rem;
+  width: 100%;
+}
+
+.ctv-business-form-action {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.25rem;
+  justify-content: flex-end;
+}
+
+.ctv-business-form-control {
+  margin-bottom: 1.5rem;
+}
+
+.ctv-business-container-table {
+  width: 100%;
+}
+
+.ctv-business-loading {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

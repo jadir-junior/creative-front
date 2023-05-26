@@ -7,3 +7,8 @@ export interface Pagination<T> {
     totalPages: number;
   };
 }
+
+export interface Column {
+  field: string;
+  header: string;
+}

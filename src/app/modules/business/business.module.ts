@@ -6,10 +6,13 @@ import { CreateUpdateBusinessUnitComponent } from './create-update-business-unit
 import { ComponentsModule } from '../../components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreativeTemplateModule } from '../../directives/creative-template/creative-template.module';
-import { MessageService } from '../../components/toast/message.service';
+import { CreateUpdateBusinessUnitLocalComponent } from './create-update-business-unit-local/create-update-business-unit-local.component';
 
 @NgModule({
-  declarations: [CreateUpdateBusinessUnitComponent],
+  declarations: [
+    CreateUpdateBusinessUnitComponent,
+    CreateUpdateBusinessUnitLocalComponent,
+  ],
   imports: [
     CommonModule,
     BusinessRoutingModule,
