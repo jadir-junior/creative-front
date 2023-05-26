@@ -5,7 +5,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Animation, BasePanelMenuItem, MenuItem } from './base-panel-menu-item';
-import { state, style, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { PanelMenuComponent } from './panel-menu.component';
 
 @Component({
@@ -94,6 +100,8 @@ import { PanelMenuComponent } from './panel-menu.component';
     trigger('submenu', [
       state('hidden', style({ height: '0' })),
       state('visible', style({ height: '*' })),
+      transition('visible <=> hidden', [animate('{{transitionParams}}')]),
+      transition('void => *', animate(0)),
     ]),
   ],
   styleUrls: ['base-panel-menu.component.css'],
