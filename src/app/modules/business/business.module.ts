@@ -7,6 +7,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreativeTemplateModule } from '../../directives/creative-template/creative-template.module';
 import { CreateUpdateBusinessUnitLocalComponent } from './create-update-business-unit-local/create-update-business-unit-local.component';
+import { SelectsModule } from '../../components/selects/selects.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreateUpdateBusinessUnitLocalComponent } from './create-update-business
     ComponentsModule,
     ReactiveFormsModule,
     CreativeTemplateModule,
+    SelectsModule,
   ],
 })
 export class BusinessModule {}

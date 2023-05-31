@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Column } from '../../../utils/models/pagination.model';
 
 @Component({
@@ -20,9 +20,15 @@ import { Column } from '../../../utils/models/pagination.model';
         (submit)="onSubmit(form)"
       >
         <div class="ctv-business-form-control">
+          <ctv-business-unit-select
+            id="bu"
+            formControlName="businessUnit"
+          ></ctv-business-unit-select>
+        </div>
+        <div class="ctv-business-form-control">
           <ctv-input
             label="Business unit local"
-            id="business-unit-local"
+            id="bul"
             name="Business unit local"
             formControlName="businessUnitLocal"
           />
@@ -80,8 +86,8 @@ import { Column } from '../../../utils/models/pagination.model';
 })
 export class CreateUpdateBusinessUnitLocalComponent {
   form: FormGroup = this.fb.group({
-    businessUnit: [''],
-    businessUnitLocal: [''],
+    businessUnit: ['', [Validators.required]],
+    businessUnitLocal: ['', [Validators.required]],
   });
 
   businessUnitLocals = [];
@@ -100,5 +106,7 @@ export class CreateUpdateBusinessUnitLocalComponent {
 
   deleteBusinessUnitLocal(id: string) {}
 
-  onSubmit({ value }: FormGroup): void {}
+  onSubmit({ value }: FormGroup): void {
+    console.log(value);
+  }
 }
