@@ -108,11 +108,9 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
     this.businessService.listBusinessUnits().subscribe({
       next: (response) => {
         this.value = response.data;
-      },
-      error: () => {},
-      complete: () => {
         this.loading = false;
       },
+      error: () => (this.loading = false),
     });
   }
 
