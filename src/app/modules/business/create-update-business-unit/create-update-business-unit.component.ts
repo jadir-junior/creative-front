@@ -2,6 +2,7 @@ import { BusinessService, BusinessUnit } from './../services/business.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../../components/toast/message.service';
+import { Column } from '../../../utils/models/pagination.model';
 
 @Component({
   selector: 'app-create-update-business-unit',
@@ -10,17 +11,17 @@ import { MessageService } from '../../../components/toast/message.service';
     <hr />
     <div class="company-section">
       <div>
-        <h3 class="text-lg text-semi-bold">Business unit profile</h3>
+        <h3 class="text-lg text-semi-bold">Business unit</h3>
         <p class="text-sm text-regular">
           Create your business unit company here
         </p>
       </div>
       <form
         [formGroup]="form"
-        style="margin-top: 1.25rem; width: 100%;"
+        class="ctv-business-form"
         (submit)="onSubmit(form)"
       >
-        <div style="margin-bottom: 1.5rem">
+        <div class="ctv-business-form-control">
           <ctv-input
             label="Business unit"
             id="business-unit"
@@ -28,9 +29,7 @@ import { MessageService } from '../../../components/toast/message.service';
             formControlName="name"
           />
         </div>
-        <div
-          style="display: flex; gap: 12px; margin-top: 1.25rem; justify-content: flex-end;"
-        >
+        <div class="ctv-business-form-action">
           <ctv-button color="secondary" (onClick)="cancel()">Cancel</ctv-button>
           <ctv-button type="submit">Save</ctv-button>
         </div>
@@ -42,11 +41,8 @@ import { MessageService } from '../../../components/toast/message.service';
         <h3 class="text-lg text-semi-bold">Business units</h3>
         <p class="text-sm text-regular">Manage your business units</p>
       </div>
-      <div style="width: 100%">
-        <div
-          style="height: 300px; display: flex; align-items:center; justify-content: center;"
-          *ngIf="loading"
-        >
+      <div class="ctv-business-container-table">
+        <div class="ctv-business-loading" *ngIf="loading">
           <ctv-progress-spinner label="Loading..."></ctv-progress-spinner>
         </div>
         <ctv-not-data *ngIf="!value.length && !loading"></ctv-not-data>
@@ -80,16 +76,7 @@ import { MessageService } from '../../../components/toast/message.service';
       </div>
     </div>
   `,
-  styles: [
-    `
-      .company-section {
-        padding-top: 2rem;
-        padding-bottom: 1.25rem;
-        display: flex;
-        gap: 2rem;
-      }
-    `,
-  ],
+  styleUrls: ['../create-update-business.css'],
 })
 export class CreateUpdateBusinessUnitComponent implements OnInit {
   form: FormGroup = this.fb.group({
@@ -99,7 +86,7 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
   value: BusinessUnit[] = [];
   loading = false;
 
-  cols: any[] = [
+  cols: Column[] = [
     {
       field: 'name',
       header: 'Name',
@@ -121,11 +108,9 @@ export class CreateUpdateBusinessUnitComponent implements OnInit {
     this.businessService.listBusinessUnits().subscribe({
       next: (response) => {
         this.value = response.data;
-      },
-      error: () => {},
-      complete: () => {
         this.loading = false;
       },
+      error: () => (this.loading = false),
     });
   }
 
