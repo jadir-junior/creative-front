@@ -1,0 +1,25 @@
+<label *ngIf="label" [for]="id" class="ctv-select-label text-sm text-medium">
+  {{ label }}
+</label>
+<ng-select
+  #ngSelect
+  [ngClass]="{ 'ng-disabled': disabled, 'ctv-select-error': isError }"
+  [items]="items"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [searchable]="searchable"
+  [labelForId]="id"
+  [placeholder]="placeholder"
+  [clearable]="clearable"
+  [loading]="loading"
+  [readonly]="disabled"
+  (change)="onSelect($event)"
+  (close)="onClose()"
+  (blur)="onBlur()"
+>
+</ng-select>
+<div *ngIf="isError" class="ctv-select-error-message text-sm text-regular">
+  <span *ngIf="formControl.errors?.['required']">
+    {{ name }} is required!
+  </span>
+</div>

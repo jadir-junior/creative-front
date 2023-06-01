@@ -1,0 +1,63 @@
+.ctv-select-label {
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  display: block;
+  margin-bottom: 0.375rem;
+}
+
+.ctv-select-error-message {
+  color: var(--error-500);
+  margin-top: 0.375rem;
+}
+
+.ng-select.ctv-select-error .ng-select-container {
+  border-color: var(--error-300);
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 44px;
+}
+
+.ng-select .ng-select-container {
+  border: 1px solid var(--gray-200);
+  border-radius: 0.5rem;
+}
+
+.ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
+  border-radius: 0.5rem;
+}
+
+.ng-dropdown-panel.ng-select-bottom {
+  margin-top: 4px;
+  border: 1px solid var(--gray-200);
+  border-radius: 0.5rem;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  padding: 1rem 0.875rem;
+  margin: 0.375rem;
+  border-radius: 0.5rem;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+.ng-dropdown-panel
+  .ng-dropdown-panel-items
+  .ng-option.ng-option-selected.ng-option-marked {
+  background-color: var(--gray-200);
+}
+
+.ng-disabled.ng-select .ng-select-container {
+  background-color: var(--gray-100);
+  border-color: var(--gray-300);
+  color: var(--gray-900);
+}

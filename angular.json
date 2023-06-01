@@ -21,6 +21,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/reset.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "node_modules/normalize.css/normalize.css",
               "src/styles.css"
             ],
