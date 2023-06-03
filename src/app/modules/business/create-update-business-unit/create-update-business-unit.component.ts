@@ -4,10 +4,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../../components/toast/message.service';
 import { Column, Pagination } from '../../../utils/models/pagination.model';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { ConfirmationService } from '../../../components/confirm-dialog/confirmation.service';
 
 @Component({
   selector: 'app-create-update-business-unit',
   template: `
+    <ctv-confirm-dialog #cd [style]="{ width: '400px' }">
+      <ng-template ctvTemplate="footer">
+        <ctv-button
+          type="button"
+          color="secondary"
+          [block]="true"
+          (onClick)="cd.reject()"
+        >
+          Cancel
+        </ctv-button>
+        <ctv-button
+          type="button"
+          color="danger"
+          [block]="true"
+          (onClick)="cd.accept()"
+        >
+          Delete
+        </ctv-button>
+      </ng-template>
+    </ctv-confirm-dialog>
     <h1>Settings</h1>
     <hr />
     <div class="company-section">
@@ -66,7 +87,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
                     variant="text"
                     color="secondary"
                     [rounded]="true"
-                    (onClick)="deleteBusinessUnit(business.id)"
+                    (onClick)="delete(business.id)"
                   ></ctv-button>
                 </td>
               </tr>
@@ -82,6 +103,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
     </div>
   `,
   styleUrls: ['../create-update-business.css'],
+  providers: [ConfirmationService],
 })
 export class CreateUpdateBusinessUnitComponent implements OnInit, OnDestroy {
   destroyed: Subject<void> = new Subject<void>();
@@ -102,7 +124,8 @@ export class CreateUpdateBusinessUnitComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private businessService: BusinessService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -132,11 +155,31 @@ export class CreateUpdateBusinessUnitComponent implements OnInit, OnDestroy {
       });
   }
 
+  delete(id: string): void {
+    this.confirmationService.confirm({
+      message:
+        'Are you sure that you want to delete this business unit? This action cannot be undone.',
+      header: 'Confirmation',
+      icon: '',
+      accept: () => {
+        this.deleteBusinessUnit(id);
+      },
+      reject: () => {
+        console.log('Reject');
+      },
+    });
+  }
+
   deleteBusinessUnit(id: string): void {
     this.businessService
       .deleteBusinessUnit(id)
       .pipe(takeUntil(this.destroyed))
       .subscribe(() => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Deleted successfully',
+          detail: 'The business unit was delete succesfully',
+        });
         this.getBusinessUnits();
       });
   }

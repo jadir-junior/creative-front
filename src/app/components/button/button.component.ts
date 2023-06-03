@@ -4,9 +4,10 @@ import {
   EventEmitter,
   Input,
   Output,
+  ViewEncapsulation,
 } from '@angular/core';
 
-type Color = 'primary' | 'secondary';
+type Color = 'primary' | 'secondary' | 'danger';
 
 type Type = 'submit' | 'button';
 
@@ -20,7 +21,8 @@ type Variant = 'default' | 'text';
       [ngClass]="classes"
       [disabled]="disabled"
       [type]="type"
-      (click)="click()"
+      [attr.aria-label]="ariaLabel"
+      (click)="click($event)"
     >
       <ng-content></ng-content>
       <ng-container>
@@ -30,6 +32,7 @@ type Variant = 'default' | 'text';
   `,
   styleUrls: ['./button.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent {
   @Input() color: Color = 'primary';
@@ -39,12 +42,14 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() icon?: string;
   @Input() rounded = false;
+  @Input() block = false;
+  @Input() ariaLabel?: string;
 
-  @Output() onClick = new EventEmitter();
+  @Output() onClick: EventEmitter<Event> = new EventEmitter<Event>();
 
-  click(): void {
+  click(event: Event): void {
     if (!this.disabled) {
-      this.onClick.emit();
+      this.onClick.emit(event);
     }
   }
 
@@ -52,6 +57,7 @@ export class ButtonComponent {
     return {
       [`ctv-button-${this.color}`]: true,
       [`ctv-button-variant-${this.variant}`]: true,
+      'ctv-button-block': this.block,
       'ctv-button-rounded': this.rounded,
       'ctv-button-icon-only': this.icon && !this.label,
     };

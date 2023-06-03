@@ -9,6 +9,11 @@
   }
 }
 
+.ctv-button:focus {
+  outline: 0 none;
+  outline-offset: 0;
+}
+
 .ctv-button-primary.ctv-button-variant-default {
   color: var(--white);
   background: var(--primary-600);
@@ -23,6 +28,10 @@
     background: var(--primary-200);
     border: 1px solid var(--primary-200);
   }
+}
+
+.ctv-button-primary:focus {
+  box-shadow: 0 0 0 0.2rem var(--primary-200);
 }
 
 .ctv-button-secondary.ctv-button-variant-default {
@@ -41,6 +50,10 @@
   }
 }
 
+.ctv-button-secondary:focus {
+  box-shadow: 0 0 0 0.2rem var(--gray-200);
+}
+
 .ctv-button-secondary.ctv-button-variant-text {
   color: var(--gray-600);
   background: var(--white);
@@ -53,6 +66,26 @@
     background: var(--gray-200);
     color: var(--gray-100);
   }
+}
+
+.ctv-button-danger.ctv-button-variant-default {
+  color: var(--white);
+  background: var(--error-600);
+  border: 1px solid var(--error-600);
+
+  &:hover {
+    background: var(--error-700);
+    border: 1px solid var(--error-700);
+  }
+
+  &:disabled {
+    background: var(--error-200);
+    border: 1px solid var(--error-200);
+  }
+}
+
+.ctv-button-danger:focus {
+  box-shadow: 0 0 0 0.2rem var(--error-200);
 }
 
 .ctv-button-icon-only {
@@ -72,4 +105,8 @@
 
 .ctv-button-rounded {
   border-radius: 50%;
+}
+
+.ctv-button-block {
+  width: 100%;
 }
