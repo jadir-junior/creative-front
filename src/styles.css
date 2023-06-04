@@ -4,6 +4,8 @@
 
   --text: #344054;
 
+  --maskbg: rgba(0, 0, 0, 0.32);
+
   --gray-100: #f9fafb;
   --gray-200: #eaecf0;
   --gray-300: #d0d5dd;
@@ -39,6 +41,8 @@
   --success-700: #067647;
   --success-800: #05603a;
   --success-900: #054f31;
+
+  --focus-ring: 0 0 0 0.2rem #c7d2fe;
 
   --font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
@@ -105,4 +109,39 @@ hr {
 
 .text-semi-bold {
   font-weight: 600;
+}
+
+.ctv-overflow-hidden {
+  overflow: hidden;
+}
+
+.ctv-component-overlay {
+  background-color: rgba(0, 0, 0, 0.32);
+  transition-duration: 0.2s;
+}
+
+.ctv-component-overlay-enter {
+  animation: ctv-component-overlay-enter-animation 150ms forwards;
+}
+
+.ctv-component-overlay-leave {
+  animation: ctv-component-overlay-leave-animation 150ms forwards;
+}
+
+@keyframes ctv-component-overlay-enter-animation {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: var(--maskbg);
+  }
+}
+
+@keyframes ctv-component-overlay-leave-animation {
+  from {
+    background-color: var(--maskbg);
+  }
+  to {
+    background-color: transparent;
+  }
 }

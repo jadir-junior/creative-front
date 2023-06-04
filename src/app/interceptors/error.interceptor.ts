@@ -26,16 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         const rollbar = this.injector.get(RollbarService);
 
-        if (error instanceof HttpErrorResponse) {
-          if (error.status === 504) {
-            this.messageService.add({
-              severity: 'error',
-              summary: error.statusText,
-              detail: 'An error occurred while trying access the server',
-            });
-          }
-        }
-
+        console.error(error);
         rollbar.error(new Error(error.message).stack);
         return throwError(() => error);
       })

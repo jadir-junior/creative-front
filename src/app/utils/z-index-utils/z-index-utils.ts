@@ -23,7 +23,7 @@ export class ZIndexUtils {
     this.zIndexes = this.zIndexes.filter((i) => i.value !== zIndex);
   }
 
-  private static getZindex(el: HTMLElement): number {
+  public static getZindex(el: HTMLElement): number {
     return el ? parseInt(el.style.zIndex, 10) || 0 : 0;
   }
 

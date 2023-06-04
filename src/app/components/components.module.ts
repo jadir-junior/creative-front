@@ -9,6 +9,7 @@ import { IconModule } from './icon/icon.module';
 import { NotDataModule } from './not-data/not-data.module';
 import { ProgressSpinnerModule } from './progress-spinner/progress-spinner.module';
 import { AsideMenuModule } from './aside-menu/aside-menu.module';
+import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 
 const modules = [
   PanelMenuModule,
@@ -21,6 +22,7 @@ const modules = [
   NotDataModule,
   ProgressSpinnerModule,
   AsideMenuModule,
+  ConfirmDialogModule,
 ];
 
 @NgModule({

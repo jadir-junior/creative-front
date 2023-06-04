@@ -1,0 +1,70 @@
+<div [ngClass]="getMaskClass()" *ngIf="maskVisible">
+  <div
+    [ngClass]="{
+      'ctv-dialog ctv-confirm-dialog ctv-component': true,
+      'ctv-dialog-rtl': rtl
+    }"
+    [ngStyle]="style"
+    [@animation]="{
+      value: 'visible',
+      params: { transform: transformOptions, transition: transitionOptions }
+    }"
+    (@animation.start)="onAnimationStart($event)"
+    (@animation.done)="onAnimationEnd($event)"
+    *ngIf="visible"
+  >
+    <div class="ctv-dialog-header">
+      <div class="ctv-dialog-header-icons">
+        <ctv-button
+          *ngIf="closable"
+          type="button"
+          icon="close"
+          variant="text"
+          color="secondary"
+          [ngClass]="{
+            'ctv-dialog-header-icon ctv-dialog-header-close ctv-link': true
+          }"
+          [rounded]="true"
+          (onClick)="close($event)"
+          (keyboard.enter)="close($event)"
+        ></ctv-button>
+      </div>
+      <div class="ctv-dialog-content">
+        <div
+          class="ctv-dialog-title text-lg text-semi-bold"
+          *ngIf="option('header')"
+        >
+          {{ option("header") }}
+        </div>
+        <div
+          class="ctv-dialog-message text-sm text-regular"
+          [innerHTML]="option('message')"
+        ></div>
+      </div>
+      <div class="ctv-dialog-footer" *ngIf="footerTemplate">
+        <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+      </div>
+      <div class="ctv-dialog-footer" *ngIf="!footerTemplate">
+        <ctv-button
+          color="secondary"
+          ariaLabel="rejectAriaLabel"
+          type="button"
+          [ngClass]="'ctv-confirm-dialog-reject'"
+          [block]="true"
+          (onClick)="reject()"
+        >
+          <span *ngIf="rejectButtonLabel">{{ rejectButtonLabel }}</span>
+        </ctv-button>
+        <ctv-button
+          type="button"
+          ariaLabel="acceptAriaLabel"
+          [ngClass]="'ctv-confirm-dialog-accept'"
+          [block]="true"
+          (onClick)="accept()"
+        >
+          <span *ngIf="acceptButtonLabel">{{ acceptButtonLabel }}</span>
+        </ctv-button>
+      </div>
+    </div>
+  </div>
+</div>

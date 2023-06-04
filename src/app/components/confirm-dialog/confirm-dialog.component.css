@@ -1,0 +1,48 @@
+.ctv-dialog {
+  border-radius: 0.75rem;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  border: 0 none;
+  background-color: var(--white);
+  padding: 1.5rem;
+}
+
+.ctv-dialog .ctv-dialog-header-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ctv-dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ctv-dialog-mask.ctv-component-overlay {
+  pointer-events: auto;
+}
+
+.ctv-dialog .ctv-dialog-content {
+  margin-top: 1rem;
+}
+
+.ctv-dialog .ctv-dialog-content .ctv-dialog-title {
+  margin-bottom: 0.25rem;
+}
+
+.ctv-dialog .ctv-dialog-footer {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ctv-dialog .ctv-dialog-footer ctv-button {
+  flex: 1;
+}
