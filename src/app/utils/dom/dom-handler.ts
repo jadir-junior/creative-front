@@ -1,3 +1,4 @@
+import { ElementRef, TemplateRef } from '@angular/core';
 import { Target } from '../../types/target.type';
 
 export class DomHandler {
@@ -116,5 +117,121 @@ export class DomHandler {
     }
 
     return visibleFocusableElements;
+  }
+
+  public static getWindowScrollLeft(): number {
+    const doc = document.documentElement;
+    return (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+  }
+
+  public static getWindowScrollTop(): number {
+    const doc = document.documentElement;
+    return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+  }
+
+  public static getOuterWidth(el: HTMLElement, margin?: number): number {
+    let width = el.offsetWidth;
+
+    if (margin) {
+      const style = getComputedStyle(el);
+      width += parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    }
+
+    return width;
+  }
+
+  public static getOuterHeight(el: HTMLElement, margin?: number): number {
+    let height = el.offsetHeight;
+
+    if (margin) {
+      const style = getComputedStyle(el);
+      height += parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+    }
+
+    return height;
+  }
+
+  public static getViewport(): { width: number; height: number } {
+    const element = document.documentElement;
+    const body = document.getElementsByTagName('body')[0];
+    const width = window.innerWidth || element.clientWidth || body.clientWidth;
+    const height =
+      window.innerHeight || element.clientHeight || body.clientHeight;
+
+    return { width, height };
+  }
+
+  public static removeChild(element: HTMLElement, target: any) {
+    if (this.isElement(target)) {
+      (target as Element).removeChild(element);
+    } else if (target.el && target.el.nativeElement) {
+      target.el.nativeElement.removeChild(element);
+    } else {
+      throw 'Cannot remove ' + element + ' from ' + target;
+    }
+  }
+
+  public static fadeIn(element: HTMLElement, duration: number): void {
+    element.style.opacity = '0';
+
+    let last = +new Date();
+    let opacity = 0;
+
+    const tick = () => {
+      opacity =
+        +element.style.opacity.replace(',', '.') +
+        (new Date().getTime() - last) / duration;
+      element.style.opacity = opacity.toString();
+      last = +new Date();
+      if (+opacity < 1) {
+        window?.requestAnimationFrame(tick) || setTimeout(tick, 16);
+      }
+    };
+
+    tick();
+  }
+
+  public static getParents(element: Node, parents: Node[] = []): Node[] {
+    return element['parentNode'] === null
+      ? parents
+      : this.getParents(
+          element.parentNode,
+          parents.concat([element.parentNode])
+        );
+  }
+
+  public static getScrollableParents(element: HTMLElement): HTMLElement[] {
+    const scrollableParents: HTMLElement[] = [];
+
+    if (element) {
+      const parents = this.getParents(element);
+      const overflowRegex = /(auto|scroll)/;
+      const overflowCheck = (node: Element) => {
+        const styleDeclaration = window['getComputedStyle'](node, null);
+        return (
+          overflowRegex.test(styleDeclaration.getPropertyValue('overflow')) ||
+          overflowRegex.test(styleDeclaration.getPropertyValue('overflowX')) ||
+          overflowRegex.test(styleDeclaration.getPropertyValue('overflowY'))
+        );
+      };
+
+      for (let parent of parents) {
+        const scrollSelectors =
+          parent.nodeType === 1 &&
+          (parent as HTMLElement).dataset['scrollselectors'];
+
+        if (scrollSelectors) {
+          const selectors = scrollSelectors.split(',');
+          selectors.forEach((selector) => {
+            const el = this.findSingle(parent as HTMLElement, selector);
+            if (el && overflowCheck(el)) {
+              scrollableParents.push(el);
+            }
+          });
+        }
+      }
+    }
+
+    return scrollableParents;
   }
 }

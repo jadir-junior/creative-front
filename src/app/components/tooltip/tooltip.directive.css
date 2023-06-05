@@ -1,0 +1,50 @@
+.ctv-tooltip {
+  position: absolute;
+  display: none;
+  padding: 0.5rem 0.75rem;
+  max-width: 12.5rem;
+  background: var(--gray-900);
+  color: var(--white);
+  border-radius: 8px;
+}
+
+.ctv-tooltip .ctv-tooltip-text {
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.ctv-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.ctv-tooltip-right .ctv-tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -25rem;
+  border-width: 0.25em 0.25em 0.25em 0;
+}
+
+.ctv-tooltip-left .ctv-tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -0.25rem;
+  border-width: 0.25em 0 0.25em 0.25em;
+}
+
+.ctv-tooltip-top .ctv-tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -0.25rem;
+  border-width: 0.25em 0.25em 0;
+}
+
+.ctv-tooltip-bottom .ctv-tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -0.25rem;
+  border-width: 0 0.25rem 0.25rem;
+}

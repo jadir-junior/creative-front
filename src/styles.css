@@ -75,6 +75,10 @@ hr {
   font-weight: normal;
 }
 
+.ctv-element-inline-flex {
+  display: inline-flex;
+}
+
 .text-sm {
   font-size: 0.875rem;
   color: var(--gray-600);

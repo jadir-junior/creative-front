@@ -86,6 +86,7 @@ import { ConfirmationService } from '../../../components/confirm-dialog/confirma
                     icon="delete"
                     variant="text"
                     color="secondary"
+                    ctvTooltip="Delete"
                     [rounded]="true"
                     (onClick)="delete(business.id)"
                   ></ctv-button>

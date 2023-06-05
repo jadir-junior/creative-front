@@ -10,6 +10,7 @@ import { NotDataModule } from './not-data/not-data.module';
 import { ProgressSpinnerModule } from './progress-spinner/progress-spinner.module';
 import { AsideMenuModule } from './aside-menu/aside-menu.module';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { TooltipModule } from './tooltip/tooltip.module';
 
 const modules = [
   PanelMenuModule,
@@ -23,6 +24,7 @@ const modules = [
   ProgressSpinnerModule,
   AsideMenuModule,
   ConfirmDialogModule,
+  TooltipModule,
 ];
 
 @NgModule({
