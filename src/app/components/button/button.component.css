@@ -3,6 +3,7 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  display: inline-flex;
 
   &:disabled {
     cursor: initial;
@@ -90,7 +91,6 @@
 
 .ctv-button-icon-only {
   justify-content: center;
-  display: flex;
   align-items: center;
   width: 40px;
   height: 40px;

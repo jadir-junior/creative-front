@@ -33,6 +33,9 @@ type Variant = 'default' | 'text';
   styleUrls: ['./button.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'ctv-element ctv-element-inline-flex',
+  },
 })
 export class ButtonComponent {
   @Input() color: Color = 'primary';
