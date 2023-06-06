@@ -41,7 +41,6 @@ export class ButtonComponent {
   @Input() color: Color = 'primary';
   @Input() type: Type = 'button';
   @Input() variant: Variant = 'default';
-  @Input() label?: string;
   @Input() disabled = false;
   @Input() icon?: string;
   @Input() rounded = false;
@@ -62,7 +61,7 @@ export class ButtonComponent {
       [`ctv-button-variant-${this.variant}`]: true,
       'ctv-button-block': this.block,
       'ctv-button-rounded': this.rounded,
-      'ctv-button-icon-only': this.icon && !this.label,
+      'ctv-button-icon-only': this.icon,
     };
   }
 }
