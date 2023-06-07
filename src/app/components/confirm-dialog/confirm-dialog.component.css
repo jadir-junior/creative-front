@@ -7,6 +7,10 @@
   padding: 1.5rem;
 }
 
+.ctv-dialog.ctv-confirm-dialog {
+  width: 400px;
+}
+
 .ctv-dialog .ctv-dialog-header-icons {
   display: flex;
   justify-content: flex-end;
