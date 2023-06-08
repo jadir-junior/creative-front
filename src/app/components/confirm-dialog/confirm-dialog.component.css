@@ -7,6 +7,10 @@
   padding: 1.5rem;
 }
 
+.ctv-dialog.ctv-confirm-dialog {
+  width: 400px;
+}
+
 .ctv-dialog .ctv-dialog-header-icons {
   display: flex;
   justify-content: flex-end;
@@ -45,4 +49,52 @@
 
 .ctv-dialog .ctv-dialog-footer ctv-button {
   flex: 1;
+}
+
+.ctv-dialog-top-left .ctv-dialog,
+.ctv-dialog-bottom-left .ctv-dialog,
+.ctv-dialog-left .ctv-dialog,
+.ctv-dialog-top-right .ctv-dialog,
+.ctv-dialog-bottom-right .ctv-dialog,
+.ctv-dialog-right .ctv-dialog,
+.ctv-dialog-top .ctv-dialog,
+.ctv-dialog-bottom .ctv-dialog {
+  margin: 0.75rem;
+  transform: translate3d(0px, 0px 0px);
+}
+
+.ctv-dialog-top-left {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ctv-dialog-bottom-left {
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.ctv-dialog-left {
+  justify-content: flex-start;
+}
+
+.ctv-dialog-top-right {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.ctv-dialog-bottom-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.ctv-dialog-right {
+  justify-content: flex-end;
+}
+
+.ctv-dialog-top {
+  align-items: flex-start;
+}
+
+.ctv-dialog-bottom {
+  align-items: flex-end;
 }

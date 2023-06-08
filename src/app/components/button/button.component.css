@@ -4,6 +4,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   display: inline-flex;
+  justify-content: center;
 
   &:disabled {
     cursor: initial;

@@ -9,7 +9,7 @@ import { ConfirmationService } from '../../../components/confirm-dialog/confirma
 @Component({
   selector: 'app-create-update-business-unit',
   template: `
-    <ctv-confirm-dialog #cd [style]="{ width: '400px' }">
+    <ctv-confirm-dialog #cd>
       <ng-template ctvTemplate="footer">
         <ctv-button
           type="button"
@@ -161,12 +161,8 @@ export class CreateUpdateBusinessUnitComponent implements OnInit, OnDestroy {
       message:
         'Are you sure that you want to delete this business unit? This action cannot be undone.',
       header: 'Confirmation',
-      icon: '',
       accept: () => {
         this.deleteBusinessUnit(id);
-      },
-      reject: () => {
-        console.log('Reject');
       },
     });
   }

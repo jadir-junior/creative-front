@@ -497,7 +497,7 @@ export class ConfirmDialogComponent implements AfterContentInit, OnDestroy {
 
   accept(): void {
     if (this.confirmation && this.confirmation.acceptEvent) {
-      this.confirmation.acceptEvent.emit();
+      this.confirmation.acceptEvent.emit(ConfirmEventType.ACCEPT);
     }
 
     this.hide(ConfirmEventType.ACCEPT);

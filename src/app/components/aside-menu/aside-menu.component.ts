@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, filter } from 'rxjs';
 import { MenuItem } from '../panel-menu/base-panel-menu-item';
 import { NavigationEnd, Router } from '@angular/router';
+import { menuItems } from './menu-items';
 
 @Component({
   selector: 'ctv-aside-menu',
@@ -10,36 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
   `,
 })
 export class AsideMenuComponent implements OnInit, OnDestroy {
-  items: MenuItem[] = [
-    {
-      label: 'Business',
-      icon: 'factory',
-      items: [
-        {
-          label: 'Business unit',
-          routerLink: ['/business/create-business-unit'],
-        },
-        {
-          label: 'Business unit local',
-          routerLink: ['/business/create-business-unit-local'],
-        },
-        {
-          label: 'Occupation Area',
-          routerLink: ['/business/create-occupation-area'],
-        },
-      ],
-    },
-    {
-      label: 'Home',
-      icon: 'other_houses',
-      items: [],
-    },
-    {
-      label: 'Dashboard',
-      icon: 'dashboard',
-      items: [],
-    },
-  ];
+  items: MenuItem[] = menuItems;
 
   routerSubscription?: Subscription;
 
