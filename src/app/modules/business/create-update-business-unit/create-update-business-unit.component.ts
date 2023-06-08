@@ -164,9 +164,6 @@ export class CreateUpdateBusinessUnitComponent implements OnInit, OnDestroy {
       accept: () => {
         this.deleteBusinessUnit(id);
       },
-      reject: () => {
-        console.log('Reject');
-      },
     });
   }
 
